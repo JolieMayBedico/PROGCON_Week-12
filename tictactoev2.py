@@ -1,93 +1,69 @@
-Function Main
-    Declare String Array board[9]
-    Declare Integer currentPlayer
-    Declare String winner
-    Declare Integer move
-    Declare Integer userMove
-    Declare Integer computerMove
+import random
+random.seed()   #Prepare random number generator
 
-    Assign board[0] = ""
-    Assign board[1] = ""
-    Assign board[2] = ""
-    Assign board[3] = ""
-    Assign board[4] = ""
-    Assign board[5] = ""
-    Assign board[6] = ""
-    Assign board[7] = ""
-    Assign board[8] = ""
-    Assign currentPlayer = Random(2) + 1
-    Assign winner = ""
-    While winner = ""
-        Input move
-        If move >= 1 And move <= 9
-            Assign board[move - 1] = "O"
-            If board[move - 1] = ""
-                Assign board[move - 1] = "O"
-            End
-            If board[0] = "O" And board[1] = "O" And board[2] = "O"
-                Assign winner = "User wins"
-            End
-            Output board[0] & "|" & board[1] & "|" & board[2]
-            If board[3] = "O" And board[4] = "O" And board[5] = "O"
-                Assign winner = "User wins"
-            End
-            Output board[3] & "|" & board[4] & "|" & board[5]
-            If board[6] = "O" And board[7] = "O" And board[8] = "O"
-                Assign winner = "User wins"
-            End
-            Output board[6] & "|" & board[7] & "|" & board[8]
-            If board[0] = "O" And board[3] = "O" And board[6] = "O"
-                Assign winner = "User wins"
-            End
-            If board[1] = "O" And board[4] = "O" And board[7] = "O"
-                Assign winner = "User wins"
-            End
-            If board[2] = "O" And board[5] = "O" And board[8] = "O"
-                Assign winner = "User wins"
-            End
-            If board[0] = "O" And board[4] = "O" And board[8] = "O"
-                Assign winner = "User wins"
-            End
-            If board[2] = "O" And board[4] = "O" And board[6] = "O"
-                Assign winner = "User wins"
-            End
-            Output "Computer's Turn"
-            Assign computerMove = Random(9)
-            Assign board[computerMove] = "X"
-            If board[computerMove] = ""
-                Assign board[computerMove] = "X"
-            End
-            If board[0] = "X" And board[1] = "X" And board[2] = "X"
-                Assign winner = "Computer wins"
-            End
-            Output board[0] & "|" & board[1] & "|" & board[2]
-            If board[3] = "X" And board[4] = "X" and board[5] = "X"
-                Assign winner = "Computer wins"
-            End
-            Output board[3] & "|" & board[4] & "|" & board[5]
-            If board[6] = "X" And board[7] = "X" And board[8] = "X"
-                Assign winner = "Computer wins"
-            End
-            Output board[6] & "|" & board[7] & "|" & board[8]
-            If board[0] = "X" And board[3] = "X" And board[6] = "X"
-                Assign winner = "Computer wins"
-            End
-            If board[1] = "X" And board[4] = "X" And board[7] = "X"
-                Assign winner = "Computer wins"
-            End
-            If board[2] = "X" And board[5] = "X" And board[8] = "X"
-                Assign winner = "Computer wins"
-            End
-            If board[0] = "X" And board[4] = "X" And board[8] = "X"
-                Assign winner = "Computer wins"
-            End
-            If board[2] = "X" And board[4] = "X" And board[6] = "X"
-                Assign winner = "Computer wins"
-            End
-        Else
-            Output "Invalid Move"
-            Assign board[computerMove] = "O"
-        End
-    End
-    Output Winner
-End
+board = [""] * (9)
+
+board[0] = " "
+board[1] = " "
+board[2] = " "
+board[3] = " "
+board[4] = " "
+board[5] = " "
+board[6] = " "
+board[7] = " "
+board[8] = " "
+currentPlayer = int(random.random() * 2) + 1
+winner = ""
+while winner == "":
+    move = int(input())
+    if move >= 1 and move <= 9:
+        board[move - 1] = "O"
+        if board[move - 1] == " ":
+            board[move - 1] = "O"
+        if board[0] == "O" and board[1] == "O" and board[2] == "O":
+            winner = "User wins"
+        print(board[0] + "|" + board[1] + "|" + board[2])
+        if board[3] == "O" and board[4] == "O" and board[5] == "O":
+            winner = "User wins"
+        print(board[3] + "|" + board[4] + "|" + board[5])
+        if board[6] == "O" and board[7] == "O" and board[8] == "O":
+            winner = "User wins"
+        print(board[6] + "|" + board[7] + "|" + board[8])
+        if board[0] == "O" and board[3] == "O" and board[6] == "O":
+            winner = "User Wins"
+        if board[1] == "O" and board[4] == "O" and board[7] == "O":
+            winner = "User wins"
+        if board[2] == "O" and board[5] == "O" and board[8] == "O":
+            winner = "User wins"
+        if board[0] == "O" and board[4] == "O" and board[8] == "O":
+            winner = "User wins"
+        if board[2] == "O" and board[4] == "O" and board[6] == "O":
+            winner = "User wins"
+        print("Computer's Turn...")
+        computerMove = int(random.random() * 9)
+        board[computerMove] = "X"
+        if board[computerMove] == " ":
+            board[computerMove] = "X"
+        if board[0] == "X" and board[1] == "X" and board[2] == "X":
+            winner = "Computer wins"
+        print(board[0] + "|" + board[1] + "|" + board[2])
+        if board[3] == "X" and board[4] == "X" and board[5] == "X":
+            winner = "Computer wins"
+        print(board[3] + "|" + board[4] + "|" + board[5])
+        if board[6] == "X" and board[7] == "X" and board[8] == "X":
+            winner = "Computer wins"
+        print(board[6] + "|" + board[7] + "|" + board[8])
+        if board[0] == "X" and board[3] == "X" and board[6] == "X":
+            winner = "Computer wins"
+        if board[1] == "X" and board[4] == "X" and board[7] == "X":
+            winner = "Computer wins"
+        if board[2] == "X" and board[5] == "X" and board[8] == "X":
+            winner = "Computer wins"
+        if board[0] == "X" and board[4] == "X" and board[8] == "X":
+            winner = "Computer wins"
+        if board[2] == "X" and board[4] == "X" and board[6] == "X":
+            winner = "Computer wins"
+    else:
+        print("Invalid Move")
+        board[computerMove] = "O"
+print(winner)
